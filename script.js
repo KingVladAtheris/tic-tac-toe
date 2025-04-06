@@ -47,6 +47,9 @@ function createPlayer(markerId, marker) {
 
     console.log(`${newPlayer.name} is playing as ${newPlayer.marker}`);
     hidePlayerButtons(); 
+    document.getElementById("gameContainer").style.display = "block";
+    document.getElementById("newGame").style.display = "block";
+    document.getElementById("newMatch").style.display = "block";
   } else {
     alert("Player name is required!");
   }
@@ -231,6 +234,11 @@ function newMatch() {
   // Clear the game board
   const cells = document.querySelectorAll(".cell");
   cells.forEach(cell => cell.textContent = "");
+
+  // Hide the board again
+  document.getElementById("gameContainer").style.display = "none";
+  document.getElementById("newGame").style.display = "none";
+  document.getElementById("newMatch").style.display = "none";
 
   updateStatus(); // Update status for a fresh start
 }
