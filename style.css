@@ -8,6 +8,12 @@
     margin: 0;
 }
 
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -24,3 +30,29 @@
     font-size: 2rem;
     font-weight: bold;
   }
+
+#statuscontainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.playerStatus{
+  display: flex;
+  flex-direction: row;
+}
+
+.hidden {
+  display: none;
+}
+
+
+#gamebuttons{
+  display:flex;
+  flex-direction: row;
+  
+}
+
+#playerbutton{
+  display: flex;
+  flex-direction: row;
+}

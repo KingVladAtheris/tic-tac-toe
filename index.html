@@ -8,19 +8,35 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div>
+
+    <div id="logo">Tic-Tac-Toe</div>
+    <div id="playerButtons">
         <button id="markerX">Play as X</button>
         <button id="markerO">Play as O</button>
       </div>
     
-      <div id="playerStatus"></div>
-      <div id="aiStatus"></div>
+    
       
       <div id="gameContainer" style="display: none;">
         <div id="board"></div>
       </div>
-      <button id="newGame" style="display: none;">New Game</button>
-      <button id="newMatch" style="display: none;">New Match</button>
+      <div id="gamebuttons">
+        <button id="newGame" style="display: none;">New Game</button>
+        <button id="newMatch" style="display: none;">New Match</button>
+      </div>
+      
+    <div id="statuscontainer">
+      <div class="playerStatus hidden">
+        <div id="markerOneImageDOM">X</div>
+        <div id="playerOneNameDOM"></div>
+        <div id="playerOneScoreDOM"></div>
+      </div>
+      <div class="playerStatus hidden">
+        <div id="markerTwoImageDOM">O</div>
+        <div id="playerTwoNameDOM"></div>
+        <div id="playerTwoScoreDOM"></div>
+      </div>
+    </div>
     
 </body>
 </html>

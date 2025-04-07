@@ -50,6 +50,8 @@ function createPlayer(markerId, marker) {
     document.getElementById("gameContainer").style.display = "block";
     document.getElementById("newGame").style.display = "block";
     document.getElementById("newMatch").style.display = "block";
+    revealPlayerStatus();
+    hideLogo();
   } else {
     alert("Player name is required!");
   }
@@ -66,6 +68,20 @@ function createAI() {
     }
   }
   updateStatus(); 
+}
+
+// Reveal the player name and score 
+function revealPlayerStatus() {
+  const statuses = document.querySelectorAll(".playerStatus");
+  statuses.forEach(div => div.classList.remove("hidden"));
+}
+
+// Hide the logo
+function hideLogo() {
+  const logo = document.querySelector("#logo");
+  if (logo) {
+    logo.classList.add("hidden");
+  }
 }
 
 // Hide the player buttons after one is clicked
@@ -96,12 +112,15 @@ oButton.addEventListener("click", () => {
 
 // Updates the game status display
 function updateStatus() {
-  const playerstatus = document.getElementById('playerStatus');
-  const aistatus = document.getElementById('aiStatus');
-  playerstatus.textContent = `Player X: ${playerX ? playerX.name : 'Not yet selected'} (${playerX ? playerX.wins : 0} wins)`
-  aistatus.textContent = `Player O: ${playerO ? playerO.name : 'Not yet selected'} (${playerO ? playerO.wins : 0} wins)`
+  const playeonescore = document.getElementById('playerOneScoreDOM');
+  const playertwoscore = document.getElementById('playerTwoScoreDOM');
+  const playeronename = document.getElementById('playerOneNameDOM');
+  const playertwoname = document.getElementById('playerTwoNameDOM');
+  playeonescore.textContent = playerX ? playerX.wins: "";
+  playertwoscore.textContent = playerO ? playerO.wins: "";
+  playeronename.textContent = playerX ? playerX.name: "";
+  playertwoname.textContent = playerO ? playerO.name: "";
 
-  ;
 }
 
 // Initialize the game board
