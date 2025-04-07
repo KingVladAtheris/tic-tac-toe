@@ -76,6 +76,12 @@ function revealPlayerStatus() {
   statuses.forEach(div => div.classList.remove("hidden"));
 }
 
+// Hide the player name and score
+function hidePlayerStatus() {
+  const statuses = document.querySelectorAll(".playerStatus");
+  statuses.forEach(div => div.classList.add("hidden"));
+}
+
 // Hide the logo
 function hideLogo() {
   const logo = document.querySelector("#logo");
@@ -84,10 +90,17 @@ function hideLogo() {
   }
 }
 
+// Show the logo
+function showLogo() {
+  const logo = document.querySelector("#logo");
+  if (logo) {
+    logo.classList.remove("hidden");
+  }
+}
+
 // Hide the player buttons after one is clicked
 function hidePlayerButtons() {
-  document.getElementById("markerX").style.display = "none";
-  document.getElementById("markerO").style.display = "none";
+  document.getElementById("playerButtons").style.display = "none";
 }
 
 // Create player buttons and attach event listeners
@@ -148,6 +161,7 @@ function createGameBoard() {
     board.appendChild(cell);
   }
 }
+
 
 // Start the game, trigger the first move for the AI if O was selected
 function startGame() {
@@ -245,8 +259,7 @@ function newMatch() {
   gameOver = false;
 
   // Re-enable the buttons and show them again
-  document.getElementById("markerX").style.display = "block";
-  document.getElementById("markerO").style.display = "block";
+  document.getElementById("playerButtons").style.display = "block";
   document.getElementById("markerX").disabled = false;
   document.getElementById("markerO").disabled = false;
 
@@ -258,6 +271,12 @@ function newMatch() {
   document.getElementById("gameContainer").style.display = "none";
   document.getElementById("newGame").style.display = "none";
   document.getElementById("newMatch").style.display = "none";
+
+  // Hide player status
+  hidePlayerStatus();
+
+  // Show logo
+  showLogo();
 
   updateStatus(); // Update status for a fresh start
 }

@@ -12,28 +12,122 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 #board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-gap: 5px;
-  }
-  .cell {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: lightgray;
-    cursor: pointer;
-    font-size: 2rem;
-    font-weight: bold;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
+  margin: 20px auto;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #cdd0ff; 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Comic Neue', cursive, sans-serif;
+
+}
+
+.cell:nth-child(odd) {
+  background-color: #cdffcb; 
+}
+
+.cell:nth-child(even) {
+  background-color: #b3ffb9; 
+}
+
+.cell:hover {
+  background-color: #ff9999; 
+  transform: scale(1.05);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2); 
+}
+
 
 #statuscontainer{
   display: flex;
   flex-direction: row;
+  transform: rotate(-5deg);
+
+}
+
+#markerOneImageDOM{
+  font-size: 50px;
+  font-weight: bold;
+  color: #cc3f3f;
+  text-shadow: 
+    -3px -3px 0 #fff,
+    3px -3px 0 #fff,
+    -3px 3px 0 #fff,
+    3px 3px 0 #fff,
+    0 0 10px #ff9999;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  padding: 20px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: #ffe6e6;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transform: rotate(-5deg);
+}
+
+#markerTwoImageDOM{
+  margin-left: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #4c3bcc;
+  text-shadow: 
+    -3px -3px 0 #fff,
+    3px -3px 0 #fff,
+    -3px 3px 0 #fff,
+    3px 3px 0 #fff,
+    0 0 10px #99a8ff;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  padding: 20px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: #e6e6ff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transform: rotate(-5deg);
+}
+
+#playerOneNameDOM{
+  color: #ff4d4d;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  padding: 20px;
+  font-size: 40px;
+  width: 150px;
+  overflow: hidden;
+}
+
+#playerTwoNameDOM{
+  color: #5f4dff;
+  font-family: 'Comic Neue', cursive, sans-serif;
+  padding: 20px;
+  font-size: 40px;
+  width: 150px;
+  overflow: hidden;
+}
+
+#playerOneScoreDOM, #playerTwoScoreDOM{
+  color: rgb(122, 116, 116);
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 40px;
+  padding: 20px;
+
 }
 
 .playerStatus{
@@ -49,10 +143,165 @@ body{
 #gamebuttons{
   display:flex;
   flex-direction: row;
+  gap: 20px;
   
 }
 
-#playerbutton{
+#playerButtons{
   display: flex;
   flex-direction: row;
+  gap: 40px;
+}
+#logo {
+  justify-content: center;
+  align-items: center;
+  gap: 10px; 
+  background: #b3ffb9; 
+  padding: 20px 40px;
+  border-radius: 30px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  height: 330px;
+  width: 330px;
+}
+
+#tic {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  background-color: rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: rotate(-5deg);
+  background-color: #ff4d4d;
+}
+
+#tac {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  background-color: rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: rotate(5deg);
+  margin-top: 20px;
+  background-color: rgba(255, 165, 0, 0.8);
+}
+
+#toe {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  background-color: rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: rotate(-5deg);
+  margin-top: 20px;
+  background-color: #5f4dff;
+}
+
+#tic:hover {
+  transform: scale(1.1); 
+  background-color: #ff3333; 
+}
+
+#tac:hover {
+  transform: scale(1.1); 
+  background-color: #e59400; 
+}
+
+#toe:hover {
+  transform: scale(1.1); 
+  background-color: #4e3ac5; 
+}
+
+#markerX, #markerO {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#markerX {
+  background-color: #ff4d4d; 
+  border: none;
+}
+
+#markerO {
+  background-color: #5f4dff; 
+  border: none;
+}
+
+#markerX:hover {
+  background-color: #cc3f3f; 
+}
+
+#markerO:hover {
+  background-color: #4c3bcc; 
+}
+
+#markerX:hover, #markerO:hover {
+  transform: scale(1.1); 
+}
+
+#markerX:active, #markerO:active {
+  transform: scale(0.95); 
+}
+
+#newGame, #newMatch {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff; 
+  background-color: #333; 
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+#newGame:hover, #newMatch:hover {
+  background-color: #555;
+  transform: scale(1.1); 
+}
+
+#newGame:active, #newMatch:active {
+  transform: scale(0.95); 
+  background-color: #222; 
+}
+
+#newGame.outline, #newMatch.outline {
+  color: #333; 
+  background-color: transparent;
+  border: 2px solid #333; 
+  text-shadow: none; 
+}
+
+#newGame.outline:hover, #newMatch.outline:hover {
+  background-color: #333; 
+  color: #fff; 
 }
